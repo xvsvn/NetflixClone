@@ -46,6 +46,8 @@ class HomeViewController: UIViewController {
         let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
         homeFedTable.tableHeaderView = headerView
         
+        
+   
         getTrendingMovies()
     
         APICaller.shared.getMovie(with: "Harry poter") { result in
@@ -113,7 +115,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             
         }
         
-        
+        cell.delegate = self
    
 
             switch indexPath.section {
@@ -209,5 +211,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     }
     
+extension HomeViewController: CollectionViewTableViewCellDelegate {
+    func collectionViewTableViewCellDidTapCell(_ cell: CollectionViewTableViewCell, viewModel: TitlePreviewViewModel) {
+        DispatchQueue.main.async { [weak self] in
+            let vc = TitlePreviewViewController()
+            vc.configure(with: viewModel)
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+}
 
 
