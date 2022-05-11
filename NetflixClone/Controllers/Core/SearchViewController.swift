@@ -2,9 +2,8 @@
 //  SearchViewController.swift
 //  NetflixClone
 //
-//  Created by Xasan Xasanov on 30/04/22.
+//  Created by Xasan Xasanov on 09/05/22.
 //
-
 
 import UIKit
 
@@ -105,11 +104,11 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         
-     
+ 
     }
 }
 
-extension SearchViewController: UISearchResultsUpdating {
+extension SearchViewController: UISearchResultsUpdating  {
     
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
@@ -120,7 +119,7 @@ extension SearchViewController: UISearchResultsUpdating {
               let resultsController = searchController.searchResultsController as? SearchResultsViewController else {
                   return
               }
-      
+        
         
         APICaller.shared.search(with: query) { result in
             DispatchQueue.main.async {
@@ -135,7 +134,6 @@ extension SearchViewController: UISearchResultsUpdating {
         }
     }
     
-    
-   
-    
 }
+    
+  

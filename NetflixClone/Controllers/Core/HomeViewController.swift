@@ -47,6 +47,10 @@ class HomeViewController: UIViewController {
         homeFedTable.tableHeaderView = headerView
         
         getTrendingMovies()
+    
+        APICaller.shared.getMovie(with: "Harry poter") { result in
+            //
+        }
     }
     
     
